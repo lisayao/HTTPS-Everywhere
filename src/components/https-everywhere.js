@@ -466,7 +466,8 @@ HTTPSEverywhere.prototype = {
         }
       }
     } else if (topic == "app-startup") {
-      this.log(DBUG,"Got app-startup");
+    // lisa add (grep for sessionstore-windows-restored tomorrow
+        this.log(DBUG,"Got app-startup");
     } else if (topic == "profile-before-change") {
       this.log(INFO, "Got profile-before-change");
       var catman = Components.classes["@mozilla.org/categorymanager;1"]
@@ -498,6 +499,7 @@ HTTPSEverywhere.prototype = {
       }
     } else if (topic == "sessionstore-windows-restored") {
       this.maybeShowObservatoryPopup();
+      this.maybeShowMCBOffPopup();
     }
     return;
   },
@@ -521,6 +523,36 @@ HTTPSEverywhere.prototype = {
     if (!shown && !enabled)
       ssl_observatory.registerProxyTestNotification(obs_popup_callback);
   },
+
+  maybeShowMCBOffPopup: function() {
+
+    //necessary definitions to access preferences
+    //const CC = Components.classes;
+    //const CI = Components.interfaces;
+    var ssl_observatory = CC["@eff.org/ssl-observatory;1"]
+        .getService(Components.interfaces.nsISupports)
+        .wrappedJSObject;
+    var obsprefs = ssl_observatory.prefs;
+   
+    //check that firefox is version 23 and up
+    var appInfo = CC["@mozilla.org/xre/app-info;1"].getService(CI.nsIXULAppInfo);
+    var platformVer = appInfo.platformVersion;
+    var versionChecker = CC["@mozilla.org/xpcom/version-comparator;1"]
+        .getService(CI.nsIVersionComparator);
+    var firefox_23_up = (versionChecker.compare(appInfo.version, "23.0a1") >=0);
+
+    //has the popup already been shown? is mixed content blocking on?
+    var popup_shown = obsprefs.getBoolPref("security.mixed_content.block_active_content.popup_shown");
+    var mixed_active_blocked = obsprefs.getBoolPref("security.mixed_content.block_active_content");
+
+    //if the popup hasn't been shown yet, mixed content blocking is on, 
+    //and firefox is version 23 or more, then permit the button to modify settings  
+    if (!popup_shown && mixed_active_blocked && firefox_23_up) { 
+      this.chrome_opener("chrome://https-everywhere/content/mcb_off_pop_up.xul");
+    }
+
+  },
+  
 
   getExperimentalFeatureCohort: function() {
     // This variable is used for gradually turning on features for testing and
