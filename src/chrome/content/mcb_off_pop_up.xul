@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://https-everywhere/locale/ssl-observatory.dtd">
+<window id="mixed-content-blocker-off" 
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+  xmlns:html="http://www.w3.org/1999/xhtml" 
+  title="Toggle Mixed Content Blocker" 
+  width="500" 
+  height="440" 
+  align="center"
+  onload="document.getElementById('ask-me-later').focus()"
+  >
+    <script type="application/x-javascript" src="mcb_off_pop_up.js" />
+    <image src="chrome://https-everywhere/skin/ssl-observatory-messy.jpg" />
+    <label style="padding:25px;">Mixed content blocking (MCB) is a new function in Firefox23 that will cause some websites to be incompletely rendered. Turning off MCB will improve the browsing experience but may lower security. Browser restart is necessary for changes to take effect.</label>
+
+    <commandgroup>
+      <command id="mcb_off" oncommand="blocking_off() ; popup_done()" />
+      <command id="mcb_on" oncommand="popup_done()" />
+      <command id="later" oncommand="window.close()" />
+      <command id="more-info" 
+               oncommand='popup_done() ; 
+               window.open("https://wiki.mozilla.org/Security/Features/Mixed_Content_Blocker",
+               "chrome, centerscreen")'
+      />
+    </commandgroup>
+
+    <vbox flex="1">
+    <spacer flex="5" />
+    <separator class="thin"/>
+      <hbox>
+        <spacer flex="2" />
+        <button label="Turn Off Mixed Content Blocking" tabindex="2" accesskey="y" 
+                command='mcb_off'/>
+        <spacer flex="1" />
+        <button label="Leave Mixed Content Blocking On" tabindex="3" accesskey="n"
+                command='mcb_on'/>
+        <spacer flex="2" />
+      </hbox>
+    <separator class="thin"/>
+    <spacer flex="10" />
+      <hbox>
+        <spacer flex="2" />
+        <button label="More Info" tabindex="4" accesskey="D" 
+                command='more-info'/>
+        <spacer flex="1" />
+        <button id="ask-me-later" label="Ask Me Later" 
+                tabindex="1" accesskey="A" command='later'/>
+        <spacer flex="2" />
+      </hbox>
+    <separator class="thin"/>
+    <spacer flex="1" />
+    </vbox>
+
+</window>
