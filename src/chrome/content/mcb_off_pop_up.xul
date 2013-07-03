@@ -12,14 +12,14 @@
   >
     <script type="application/x-javascript" src="mcb_off_pop_up.js" />
     <image src="chrome://https-everywhere/skin/ssl-observatory-messy.jpg" />
-    <label style="padding:25px;">Mixed content blocking (MCB) is a new function in Firefox23 that will cause some websites to be incompletely rendered. Turning off MCB will improve the browsing experience but may lower security. Browser restart is necessary for changes to take effect.</label>
+    <label style="padding:25px;">Mixed content blocking (MCB) is a new function in Firefox23 that will cause some websites to be incompletely rendered. Turning off MCB will improve the browsing experience but may lower security. Browser restart is necessary for changes to take effect. Turn mixed content blocking off?</label>
 
     <commandgroup>
       <command id="mcb_off" oncommand="blocking_off() ; popup_done()" />
       <command id="mcb_on" oncommand="popup_done()" />
       <command id="later" oncommand="window.close()" />
       <command id="more-info" 
-               oncommand='popup_done() ; 
+               oncommand=' popup_done(); 
                window.open("https://wiki.mozilla.org/Security/Features/Mixed_Content_Blocker",
                "chrome, centerscreen")'
       />
@@ -30,10 +30,10 @@
     <separator class="thin"/>
       <hbox>
         <spacer flex="2" />
-        <button label="Turn Off Mixed Content Blocking" tabindex="2" accesskey="y" 
+        <button label="Yes" tabindex="2" accesskey="y" 
                 command='mcb_off'/>
         <spacer flex="1" />
-        <button label="Leave Mixed Content Blocking On" tabindex="3" accesskey="n"
+        <button label="No" tabindex="3" accesskey="n"
                 command='mcb_on'/>
         <spacer flex="2" />
       </hbox>
