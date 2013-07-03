@@ -1,10 +1,10 @@
 <ruleset name="Iberiabank">
 
 	<target host="iberiabank.com" />
-	<target host="*.iberiabank.com" />
+	<target host="www.iberiabank.com" />
 
 
-	<securecookie host="^(?:w*\.)?iberiabank\.com$" name=".+" />
+	<securecookie host="^(?:www\.)?iberiabank\.com$" name=".+" />
 
 
 	<rule from="^http://(www\.)?iberiabank\.com/"

@@ -1,7 +1,4 @@
 <!--
-	For problematic rules, see SIL_International-problematic.xml.
-
-
 	Other SIL International rulesets:
 
 		- Ethnologue.xml
@@ -10,12 +7,8 @@
 
 	Nonfunctional subdomains:
 
-		- fieldworks	(times out)
-
-
-	Problematic subdomains:
-
-		- (www.)	(works; expired 2010-09-02, self-signed, CN: *.acquia-sites.com)
+		- (www.)	(times out)
+		- fieldworks	(ditto)
 
 -->
 <ruleset name="SIL International (partial)">

@@ -25,3 +25,4 @@ pref("extensions.https_everywhere._observatory.self_signed",true);
 pref("extensions.https_everywhere._observatory.priv_dns",false);
 pref("extensions.https_everywhere._observatory.send_asn",true);
 pref("extensions.https_everywhere._observatory.use_whitelist",true);
+pref("security.mixed_content.block_active_content.popup_shown", false);

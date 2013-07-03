@@ -1,16 +1,10 @@
-<!--
-	Nonfunctional subdomains:
-
-		- lists		(http reply)
-
--->
-<ruleset name="PGCon (partial)">
+<ruleset name="PGCon">
 
 	<target host="pgcon.org" />
 	<target host="www.pgcon.org" />
 
 
-	<securecookie host="^(?:www\.)?pgcon\.org$" name=".+" />
+	<securecookie host="^(www\.)?pgcon\.org$" name=".*" />
 
 
 	<rule from="^http://(www\.)?pgcon\.org/"
