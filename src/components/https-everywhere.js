@@ -466,7 +466,6 @@ HTTPSEverywhere.prototype = {
         }
       }
     } else if (topic == "app-startup") {
-    // lisa add (grep for sessionstore-windows-restored tomorrow
         this.log(DBUG,"Got app-startup");
     } else if (topic == "profile-before-change") {
       this.log(INFO, "Got profile-before-change");

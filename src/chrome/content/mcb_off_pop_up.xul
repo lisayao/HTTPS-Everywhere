@@ -19,7 +19,7 @@
       <command id="mcb_on" oncommand="popup_done()" />
       <command id="later" oncommand="window.close()" />
       <command id="more-info" 
-               oncommand=' popup_done(); 
+               oncommand='
                window.open("https://wiki.mozilla.org/Security/Features/Mixed_Content_Blocker",
                "chrome, centerscreen")'
       />
